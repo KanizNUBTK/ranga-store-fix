@@ -12,21 +12,21 @@ const showProducts = (products) => {
   for (const product of allProducts) {
     const image = product.images;
     const div = document.createElement("div");
-    div.classList.add("product");
+    div.classList.add("card");
     div.innerHTML = `<div class="single-product">
-      <div>
+      <div class="card-header">
     <img class="product-image" src=${product.image}></img>
       </div>
-      <div class="product-info">
+      <div class="card-body product-info">
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
       <div class="flex-div-design">
-      <p >Rating: ${product.rating?.rate}</p>
+      <p>Avarage-Rating: ${product.rating?.rate}</p>
       <p>Rating Cout: ${product.rating?.count}</p>
       </div>
       </div>
-      <div class="flex-div-design div-border">
+      <div class="card-footer flex-div-design div-border">
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-design cart-bg-color">add to cart</button>
       <button id="details-btn" onclick="displayDetails()" class="btn btn-design detail-bg-color">Details</button>
       </div>
