@@ -28,7 +28,7 @@ const showProducts = (products) => {
       </div>
       <div class="flex-div-design div-border">
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-design cart-bg-color">add to cart</button>
-      <button id="details-btn" class="btn btn-design detail-bg-color">Details</button>
+      <button id="details-btn" onclick="displayDetails()" class="btn btn-design detail-bg-color">Details</button>
       </div>
       </div>
       `;
