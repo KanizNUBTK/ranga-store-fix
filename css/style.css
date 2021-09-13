@@ -26,6 +26,9 @@ body {
   background-color: blue;
   color: white;
 }
+.search-button:hover{
+  background-color: rgb(213, 226, 230)!important;
+}
 #all-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -89,10 +92,16 @@ body {
   font-weight: bold;
 }
 .cart-bg-color{
-  background-color: rgb(2, 27, 73);
+  background-color: rgb(5, 56, 151);
+}
+.cart-bg-color:hover{
+  color: white!important;
 }
 .detail-bg-color{
-  background-color: rgb(34, 2, 53);
+  background-color: rgb(21, 125, 156);
+}
+.detail-bg-color{
+  color: white!important;
 }
 
 .cart {
