@@ -28,7 +28,7 @@ const showProducts = (products) => {
       </div>
       <div class="card-footer flex-div-design div-border">
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-design cart-bg-color">add to cart</button>
-      <button id="details-btn" onclick="displayDetails()" class="btn btn-design detail-bg-color">Details</button>
+      <button id="details-btn" onclick="getSingleProduct(${product.id})" class="btn btn-design detail-bg-color">Details</button>
       </div>
       </div>
       `;
@@ -93,3 +93,48 @@ const updateTotal = () => {
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 loadProducts();
+//modal
+const modalDOM = document.querySelector('.displayModal');
+const modalClose = document.querySelector('.displayModal-close');
+const modalContent = document.querySelector('.displayModal-content');
+
+//Make modal visible
+const showModal = () => {
+  modalDOM.style.opacity = '1';
+  modalDOM.style.pointerEvents = 'all';
+}
+
+//Make modal invisible
+const hideModal = () => {
+  modalDOM.style.opacity = '0';
+  modalDOM.style.pointerEvents = 'none';
+}
+
+//Insert html in modal
+const updateModalContent = (markup) => {
+  modalContent.innerHTML = markup;
+}
+
+//Event to close modal
+modalClose.addEventListener('click', () => hideModal());
+
+//Fetch data from api and add to modal
+const getSingleProduct = async (id) => {
+
+  showModal();
+
+  updateModalContent('<h2>Getting Data... </h2>');
+
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const data = await response.json();
+
+  updateModalContent(`
+    <div><img src="${data.image}" alt="${data.title}" /></div>
+    <div>
+      <h2>${data.title}</h2>
+      <h3>Price: $${data.price}</h3>
+      <b>Rating: ${data.rating?.rate} (${data.rating?.count})</b>
+      <p>${data.description}</p>
+    </div>
+  `);
+}
